@@ -1,4 +1,4 @@
-# Ecommerce-Application-using-Microservices 
+# Ecommerce Application using Microservices 
 
 Microservices is an architectural style and pattern that structures an application as a collection of coherent services. Each service is highly maintainable, testable, loosely coupled, independently deployable, and precisely focused.
 
