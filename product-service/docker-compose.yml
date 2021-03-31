@@ -1,0 +1,38 @@
+# docker-compose.yml
+version: '3.8'
+
+volumes:
+  productdb_vol:
+
+networks:
+  micro_network:
+    external:
+      name: micro_network
+
+services:
+  product-api:
+    container_name: cproduct-service
+    build:
+      context: .
+    ports:
+    - "5002:5002"
+    depends_on:
+     - product-db
+    networks:
+      - micro_network
+    restart: always
+
+  product-db:
+    container_name: cproduct_dbase
+    image: nouchka/sqlite3
+    ports:
+    - "32001:3306"
+    #environment:
+      #MYSQL_ROOT_PASSWORD:
+      #MYSQL_DATABASE:
+      #MYSQL_USER:
+      #MYSQL_PASSWORD:
+    networks:
+      - micro_network
+    volumes:
+    - productdb_vol:/var/lib/sqlite3
